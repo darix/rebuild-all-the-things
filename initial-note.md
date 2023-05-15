@@ -1,0 +1,61 @@
+- Container Sicherheit - welche Bibliothek läuft denn da?
+  - Containers are fun
+    - wir können einfach und schnell viele workloads deployen
+    - upstream Container, selbst gebaute Container
+  - Jeder Container ein kleiner Server
+    - ein eigenes rootfs
+    - ein eigenes system was updates braucht
+  - Wie erkennen welche Container brauchen updates?
+    - Sowohl fuer upstream container
+      - Ob upstream wohl trackt welche libraries Security updates brauchen?
+    - Wie trackt ihr das fuer die selbstgebauten?
+
+  - Never Change a running system
+    - Biggest Mistake in IT History
+    - Wir minimieren change?
+    - Scanning via Tools ala NeuVector
+      - NeuVector kann mehr als nur scannen
+      - link here
+    - wir bauen manuell die container neu wo Neuvector meckert.
+    - Aber eigentlich wollen wir doch alles automatisieren?
+
+  - Embrace Change
+    - Deploy early, Deploy Often
+    - Macht ihr das wirklich?
+      - Ja wir deployen taeglich updates auf alle unseren Servern.
+      - Noch oefters waere auch kein problem.
+    - Echt jetzt?
+      - Ja
+    - Was ist ein update deployment?
+      - Eine "Downtime" mit Vorbereitung
+    - Ihr habt doch HA fuer Eure wichtigen Services?
+      - Das wollen die meisten Versicherungen fuer IT infra doch eh?
+    - Schaltet ihr auch regelmaessig mal um, damit ihr seht obs geht?
+    - Ja? Gut. Wo ist dann das Problem Oft updates auszurollen?
+    - OBS kann container bauen
+      - Kiwi
+      - Dockerfile
+    - OBS erkennt wann sich die unterliegende Distro aendert
+      - Container baut automatisch neu.
+    - Das geht auch wenn ihr eigenen Paketen im OBS kombinieren.
+    - Ihr habt schon ein SCM?
+      - Ihr braucht auch nicht mal eure Pakete/Container im OBS pflegen.
+      - Integriert mit Git und co via Webhooks
+      - Service file here
+    - Follow the white rabbit
+      - OBS kann wieder rum Event benachrichtungen via AMQP
+      - https://rabbit.opensuse.org
+      - doku link
+    - Container spezifische Events auf der Roadmap
+      - ein Event pro container publish
+    - I have a dream
+      - Distro released security update
+      - OBS baut container neu
+      - AMQP Event
+      - Rolling update im Kubernetes 
+    - Wir wollen keinen OBS service betreiben
+      <wir sollten mit Adrian reden>
+      - pbuild
+      - braucht dann halt cron um distro aenderungen zu erkennen
+      - kein AMQP
+   - Demo time

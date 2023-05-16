@@ -32,6 +32,8 @@
       - Das wollen die meisten Versicherungen fuer IT infra doch eh?
     - Schaltet ihr auch regelmaessig mal um, damit ihr seht obs geht?
     - Ja? Gut. Wo ist dann das Problem Oft updates auszurollen?
+    - Was ist OBS?
+      - 
     - OBS kann container bauen
       - Kiwi
       - Dockerfile

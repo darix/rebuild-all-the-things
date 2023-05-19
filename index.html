@@ -47,16 +47,20 @@
       <!-- Any section element inside of this container is displayed as a slide -->
       <div class="slides">
         <section>
+          <h1>Die einzige Konstante im Leben ist Veränderung</h1>
+        </section>
+        <section>
           <h1>Container Sicherheit</h1>
           <h3>Welche Bibliothek läuft denn da?</h3>
           <p>
           <!-- TODO: github user profile links here -->
-          <small>Created by lrupp & darix and powered by <a href="https://github.com/hakimel/reveal.js/">reveal.js</a><br /><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a></small>
+          <small>Created by <a href="https://github.com/lrupp">lrupp</a> &amp; <a href="https://github.com/darix">darix</a> and powered by <a href="https://github.com/hakimel/reveal.js/">reveal.js</a><br /><a href="https://creativecommons.org/licenses/by-nd/3.0/">CC BY-ND 3.0</a></small>
           </p>
         </section>
 
         <section class="leftie">
           <h2>Containers are fun ...</h2>
+          <aside class="notes">Viele Upstream Container haben schlechte Security defaults. zb laufen unnoetig als root. Viele Freunde von mir die Container basiert arbeiten fixen diese Probleme dann.</aside>
           <ul>
             <li>Wir können einfach und schnell viele Workloads deployen</li>
             <li>Upstream Container, selbst gebaute Container</li>
@@ -65,7 +69,6 @@
         <section>
           <h2>Jeder Container ein eigener Server</h2>
           <ul>
-            <li>Ein eigenes rootfs</li>
             <li class="fragment">Ein eigenes System was Updates braucht</li>
           </ul>
         </section>
@@ -77,7 +80,7 @@
                 <li>Ob Upstream wohl trackt welche Libraries Security Updates brauchen?</li>
               </ul>
             </li>
-            <li class="fragment">Wie trackt ihr das fuer die selbstgebauten?</li>
+            <li class="fragment">Wie trackt ihr das für die selbstgebauten Container?</li>
           </ul>
         </section>
         <section>
@@ -89,6 +92,12 @@
             <li>Wir probieren Änderungen zu minimieren oder gar ganz zu vermeiden</li>
             <li>Vielerlei Gründe - meistens fehlendes/verlorengeganges Wissen/Dokumentation</li>
           </ul>
+        </section>
+        <section>
+          <h2>"Wie macht ihr eigentlich OS Updates für die Container?"</h2>
+          <p class="fragment">"Na wir deployen doch eh regelmäßig neu. Da machen wir die mit."</p>
+          <p class="fragment">"Und was ist mit dem Container da, der seit Monaten keine Änderungen im Git hatte?"</p>
+          <p class="fragment"><b>*Schweigen*</b></p>
         </section>
         <section>
           <!-- TODO: logo here -->
@@ -112,10 +121,7 @@
             Eigentlich lieben wir doch alle Automatisierung.
           </p>
         </section>
-        <section>
-          <h1>Die einzige Konstante im Leben ist Veränderung</h1>
-          <h3>Embrace Change</h3>
-        </section>
+
         <section>
           <h2>Deploy Early</h2>
           <h3>Deploy Often</h3>
@@ -134,28 +140,30 @@
         <section>
           <h2>Was ist ein Update Deployment</h2>
           <ul>
-            <li>Eine "Downtime" mit Vorbereitung</li>
+            <li>Eine "Downtime" mit Ansage...</li>
+            <li class="fragment">... und Vorbereitung</li>
           </ul>
         </section>
 
         <section>
           <h2>Wir haben doch HA für unsere wichtigen Services</h2>
           <ul>
-            <li class="fragment">Wir schalten auch regelmäßig um damit wir sehen ob es geht.</li>
+            <li class="fragment">Wir schalten auch regelmäßig um, damit wir sehen ob es geht.</li>
             <li class="fragment">Schafft auch Vertrauen dass beim Ausrollen von Updates nicht gleich alles kaputt geht.</li>
+            <li class="fragment">Wo ist der Unterschied zum Deployment einer anderen Änderung (Config/Code/Update)?</li>
           </ul>
         </section>
         <section>
-          <h1>Automatisierung von der Containerpipeline</h1>
+          <h1>Automatisierung der Container Pipeline</h1>
           <h3>Jetzt geht es um den <a href="https://openbuildservice.org">Open Build Service aka OBS</a></h3>
         </section>
         <section>
           <h2>Was kann der OBS</h2>
           <ul>
-            <li>Native Pakete (rpm/deb/Arch)</li>
-            <li>Native Packetrepositories</li>
+            <li>Native Pakete (rpm/deb/Arch/flatpak/AppImage)</li>
+            <li>Native Paket-Repositories</li>
             <li>Images (für Hardware/VMs)</li>
-            <li>Container (kiwi/Dockerfile)</li>
+            <li>Container (via kiwi oder Dockerfile)</li>
           </ul>
         </section>
         <section>
@@ -163,7 +171,7 @@
           <h2>Wie kann OBS uns bei unserem Problem helfen?</h2>
           <ul>
             <li class="fragment">OBS weiss wo welches Paket benutzt wird</li>
-            <li class="fragment">Jede Änderung im Paket baut auch darauf aufbauende Sachen neu</li>
+            <li class="fragment">Jede Änderung eines Pakets baut auch darauf aufbauende Sachen neu</li>
             <li class="fragment">Das gilt auch für Updates von der Basisdistribution</li>
           </ul>
         </section>
@@ -175,7 +183,7 @@
           <ul>
             <li>Kein Problem</li>
             <li class="fragment"><a href="https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.source_service.html">OBS kann Integration via Webhooks</a></li>
-            <li class="fragment"><a href="https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.scm_ci_workflow_integration.html">Sogar für mehrere Branches parallel via Workflow</a></li>
+            <li class="fragment"><a href="https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.scm_ci_workflow_integration.html">Sogar für mehrere Branches parallel via Workflows</a></li>
           </ul>
 
         </section>
@@ -187,7 +195,7 @@
                     -->
           <ul>
             <li>Polling vermeiden</li>
-            <li class="fragment">OBS kann wieder rum Eventbenachrichtungen via AMQP</li>
+            <li class="fragment">OBS kann Eventbenachrichtungen via AMQP</li>
             <li class="fragment">Beispiele auf <a href="https://rabbit.opensuse.org">rabbit.opensuse.org</a></li>
             <li class="fragment"><a href="https://openbuildservice.org/help/manuals/obs-admin-guide/obs.cha.administration.html#_message_bus">Dokumentation</a></li>
           </ul>
@@ -204,9 +212,11 @@
           <h2>Lasst uns mal träumen</h2>
           <ul>
             <li class="fragment">Distro released Security Update</li>
+            <li class="fragment">OBS baut eventuell Pakete neu</li>
             <li class="fragment">OBS baut Container neu</li>
+            <li class="fragment">Push auf die im OBS eingebaute Container Registry</li>
             <li class="fragment">AMQP Event</li>
-            <li class="fragment">Rolling update im Kubernetes</li>
+            <li class="fragment">Rolling Update im Kubernetes</li>
           </ul>
         </section>
         <section>
@@ -216,9 +226,9 @@
 
         <section>
           <h1>Thank you for your time</h1>
-          <h2>Happy confining things.</h2>
+          <h2>Happy rebuilding all the things.</h2>
           <p>
-          <small>Created by <a href="https://nordisch.org/">darix</a> and powered by <a href="https://github.com/hakimel/reveal.js/">reveal.js</a><br /><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a></small>
+          <small>Created by <a href="https://github.com/lrupp">lrupp</a> &amp; <a href="https://github.com/darix">darix</a> and powered by <a href="https://github.com/hakimel/reveal.js/">reveal.js</a><br /><a href="https://creativecommons.org/licenses/by-nd/3.0/">CC BY-ND 3.0</a></small>
           </p>
         </section>
 

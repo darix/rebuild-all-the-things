@@ -5,7 +5,7 @@
 
     <base href="https://presentations.nordisch.org/rebuild-all-the-things/">
 
-    <title>Rebuild All The Things</title>
+    <title>Container Sicherheit - Welche Bibliothek läuft denn da?</title>
     <meta name="description" content="Or why you actually might like AppArmor">
     <meta name="author" content="darix">
 
@@ -66,7 +66,7 @@
           <h2>Jeder Container ein eigener Server</h2>
           <ul>
             <li>Ein eigenes rootfs</li>
-            <li class="fragment">Ein eigenes System was Updates</li>
+            <li class="fragment">Ein eigenes System was Updates braucht</li>
           </ul>
         </section>
         <section>
@@ -81,67 +81,137 @@
           </ul>
         </section>
         <section>
-          <h2></h2>
+          <h1>Never change a running system</h1>
+        </section>
+        <section>
+          <h2>Biggest Mistake in IT history</h2>
           <ul>
-
+            <li>Wir probieren Änderungen zu minimieren oder gar ganz zu vermeiden</li>
+            <li>Vielerlei Gründe - meistens fehlendes/verlorengeganges Wissen/Dokumentation</li>
           </ul>
-        </section><section>
-          <h2></h2>
+        </section>
+        <section>
+          <!-- TODO: logo here -->
+          <h2>NeuVector</h2>
           <ul>
-
+            <li>Viele Features für Sicherheit in der Container Infrastruktur</li>
+            <li>Unter anderem Scanning für fehlende Security Updates in Containers</li>
           </ul>
-        </section><section>
-          <h2></h2>
+          <p><a href="https://www.neuvector.com/">www.neuvector.com</a></p>
+        </section>
+        <section>
+          <h2>Und dann?</h2>
           <ul>
-
+            <li class="fragment">Was wenn es keinen neuen Container von Upstream gibt?</li>
+            <li class="fragment">Wir bauen manuell den Container neu?</li>
           </ul>
-        </section><section>
-          <h2></h2>
+        </section>
+        <section>
+          <h2>Wollen wir das wirklich manuell machen?</h2>
+          <p>
+            Eigentlich lieben wir doch alle Automatisierung.
+          </p>
+        </section>
+        <section>
+          <h1>Die einzige Konstante im Leben ist Veränderung</h1>
+          <h3>Embrace Change</h3>
+        </section>
+        <section>
+          <h2>Deploy Early</h2>
+          <h3>Deploy Often</h3>
+        </section>
+        <section>
+          <h2>Macht Ihr das wirklich?</h2>
           <ul>
-
+            <li>Ja wir deployen mindestens täglich Updates automatisiert auf allen unseren Servern</li>
+            <li>Noch öfters wäre auch kein Problem</li>
           </ul>
-        </section><section>
-          <h2></h2>
+        </section>
+        <section>
+          <h2>Echt jetzt?</h2>
+          <h1>Ja!</h1>
+        </section>
+        <section>
+          <h2>Was ist ein Update Deployment</h2>
           <ul>
-
-          </ul>
-        </section><section>
-          <h2></h2>
-          <ul>
-
-          </ul>
-        </section><section>
-          <h2></h2>
-          <ul>
-
-          </ul>
-        </section><section>
-          <h2></h2>
-          <ul>
-
-          </ul>
-        </section><section>
-          <h2></h2>
-          <ul>
-
-          </ul>
-        </section><section>
-          <h2></h2>
-          <ul>
-
-          </ul>
-        </section><section>
-          <h2></h2>
-          <ul>
-
-          </ul>
-        </section><section>
-          <h2></h2>
-          <ul>
-
+            <li>Eine "Downtime" mit Vorbereitung</li>
           </ul>
         </section>
 
+        <section>
+          <h2>Wir haben doch HA für unsere wichtigen Services</h2>
+          <ul>
+            <li class="fragment">Wir schalten auch regelmäßig um damit wir sehen ob es geht.</li>
+            <li class="fragment">Schafft auch Vertrauen dass beim Ausrollen von Updates nicht gleich alles kaputt geht.</li>
+          </ul>
+        </section>
+        <section>
+          <h1>Automatisierung von der Containerpipeline</h1>
+          <h3>Jetzt geht es um den <a href="https://openbuildservice.org">Open Build Service aka OBS</a></h3>
+        </section>
+        <section>
+          <h2>Was kann der OBS</h2>
+          <ul>
+            <li>Native Pakete (rpm/deb/Arch)</li>
+            <li>Native Packetrepositories</li>
+            <li>Images (für Hardware/VMs)</li>
+            <li>Container (kiwi/Dockerfile)</li>
+          </ul>
+        </section>
+        <section>
+          <aside class="notes">Paket in diesem Kontext auch Container. Ich kann also auch Container stacken</aside>
+          <h2>Wie kann OBS uns bei unserem Problem helfen?</h2>
+          <ul>
+            <li class="fragment">OBS weiss wo welches Paket benutzt wird</li>
+            <li class="fragment">Jede Änderung im Paket baut auch darauf aufbauende Sachen neu</li>
+            <li class="fragment">Das gilt auch für Updates von der Basisdistribution</li>
+          </ul>
+        </section>
+        <section>
+          <aside class="notes">
+            self hosted: Workflows sind nicht im aktuellen Stable Release. (2.10.x) build.opensuse.org laeuft auch auf unstable
+          </aside>
+          <h2>Wir haben doch schon git</h2>
+          <ul>
+            <li>Kein Problem</li>
+            <li class="fragment"><a href="https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.source_service.html">OBS kann Integration via Webhooks</a></li>
+            <li class="fragment"><a href="https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.scm_ci_workflow_integration.html">Sogar für mehrere Branches parallel via Workflow</a></li>
+          </ul>
+
+        </section>
+        <section>
+          <h2>Follow the white rabbit</h2>
+          <!-- TODO
+                    <img style="float: right;" src="file:///srv/home/darix/workspace/rebuild-all-the-things/white-rabbit.jpg" />
+                    <ul style="clear: right">
+                    -->
+          <ul>
+            <li>Polling vermeiden</li>
+            <li class="fragment">OBS kann wieder rum Eventbenachrichtungen via AMQP</li>
+            <li class="fragment">Beispiele auf <a href="https://rabbit.opensuse.org">rabbit.opensuse.org</a></li>
+            <li class="fragment"><a href="https://openbuildservice.org/help/manuals/obs-admin-guide/obs.cha.administration.html#_message_bus">Dokumentation</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Container spezifische Events</h2>
+          <p>Auf der Roadmap</p>
+          <p>Erleichtert Integration mit zb Kubernetes</p>
+          <aside class="notes">Aber eigentlich auch heute schon möglich
+            Es gibt ein Event für "Repository published" und dann muss man im Script alle Images auf der Registry nach neuen Versionen durchsuchen.
+          </aside>
+        </section>
+        <section>
+          <h2>Lasst uns mal träumen</h2>
+          <ul>
+            <li class="fragment">Distro released Security Update</li>
+            <li class="fragment">OBS baut Container neu</li>
+            <li class="fragment">AMQP Event</li>
+            <li class="fragment">Rolling update im Kubernetes</li>
+          </ul>
+        </section>
+        <section>
+          <img src="file:///srv/home/darix/workspace/rebuild-all-the-things//obs-workflow.svg" />
+        </section>
 
 
         <section>

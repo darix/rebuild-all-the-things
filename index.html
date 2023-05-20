@@ -96,6 +96,7 @@
           </ul>
         </section>
         <section>
+          <aside class="notes">Wollen wir das wirklich?</aside>
           <h1>Never change a running system</h1>
         </section>
         <section>
@@ -106,22 +107,25 @@
           </ul>
         </section>
         <section>
-          <h2>"Wie macht ihr eigentlich OS Updates für die Container?"</h2>
+          <aside class="notes">Ein Gespräch das so passiert ist.</aside>
+          <h2>Wie macht ihr eigentlich OS Updates für die Container?</h2>
           <p class="fragment">"Na wir deployen doch eh regelmäßig neu. Da machen wir die mit."</p>
           <p class="fragment">"Und was ist mit dem Container da, der seit Monaten keine Änderungen im Git hatte?"</p>
           <p class="fragment"><b>*Schweigen*</b></p>
         </section>
         <section>
+          <aside class="notes">SUSE hat auch was dafür</aside>
           <!-- TODO: logo here -->
           <h2>NeuVector</h2>
           <ul>
             <li>Viele Features für Sicherheit in der Container Infrastruktur</li>
-            <li>Unter anderem Scanning für fehlende Security Updates in Containers</li>
+            <li>Unter anderem Scanning für fehlende Security Updates in Containern</li>
           </ul>
           <p><a href="https://www.neuvector.com/">www.neuvector.com</a></p>
         </section>
         <section>
           <h2>Und dann?</h2>
+          <aside class="notes">Baut das Dockerfile noch?</aside>
           <ul>
             <li class="fragment">Was wenn es keinen neuen Container von Upstream gibt?</li>
             <li class="fragment">Wir bauen manuell den Container neu?</li>
@@ -135,6 +139,7 @@
         </section>
 
         <section>
+          <aside class="notes">Überleitung: was für Prozesse brauche ich damit ich auch regelmäßig ausrollen kann.</aside>
           <h2>Deploy Early</h2>
           <h3>Deploy Often</h3>
         </section>
@@ -147,7 +152,7 @@
         </section>
         <section>
           <h2>Echt jetzt?</h2>
-          <h1>Ja!</h1>
+          <h1 class="fragment">Ja!</h1>
         </section>
         <section>
           <h2>Was ist ein Update Deployment</h2>
@@ -176,10 +181,11 @@
             <li>Native Paket-Repositories</li>
             <li>Images (für Hardware/VMs)</li>
             <li>Container (via kiwi oder Dockerfile)</li>
+            <li>Container Registry</li>
           </ul>
         </section>
         <section>
-          <aside class="notes">Paket in diesem Kontext auch Container. Ich kann also auch Container stacken</aside>
+          <aside class="notes">Man kann auch Container auf einander aufbauen lassen.</aside>
           <h2>Wie kann OBS uns bei unserem Problem helfen?</h2>
           <ul>
             <li class="fragment">OBS weiss wo welches Paket benutzt wird</li>
@@ -188,21 +194,34 @@
           </ul>
         </section>
         <section>
+          <h2>Reproduzierbarkeit</h2>
+          <ul>
+            <li>Alle Builds laufen in einer reproduzierbaren Umgebung</li>
+            <li>Kein Netzwerkzugang während des Builds</li>
+            <li>Die Sourcen werden dem Build lokal zur Verfügung gestellt</li>
+          </ul>
+        </section>
+        <section>
           <aside class="notes">
-            self hosted: Workflows sind nicht im aktuellen Stable Release. (2.10.x) build.opensuse.org laeuft auch auf unstable
+            self hosted: Workflows sind nicht im aktuellen Stable Release. (2.10.x) build.opensuse.org läuft auf unstable.
           </aside>
           <h2>Wir haben doch schon git</h2>
           <ul>
             <li>Kein Problem</li>
             <li class="fragment"><a href="https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.source_service.html">OBS kann Integration via Webhooks</a></li>
             <li class="fragment"><a href="https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.scm_ci_workflow_integration.html">Sogar für mehrere Branches parallel via Workflows</a></li>
+            <li class="fragment">Source Services können auch Go/Cargo/NodeJS Module ziehen zum bauen</li>
           </ul>
+        </section>
+        <!-- TODO: graphic #1
+        <section>
 
         </section>
+        -->
         <section>
           <h2>Follow the white rabbit</h2>
           <div style="display: flex; flex-direction: row-reverse;">
-            <img style="float: right;" src="file:///srv/home/darix/workspace/rebuild-all-the-things/white-rabbit.jpg" />
+            <img style="float: right;" src="white-rabbit.jpg" />
             <ul>
               <li>Polling vermeiden</li>
               <li class="fragment">OBS kann Eventbenachrichtungen via AMQP</li>
@@ -220,6 +239,7 @@
           </aside>
         </section>
         <section>
+          <aside class="notes">Mit so einem Workflow kann man dann Container auch in Production benutzen.</aside>
           <h2>Lasst uns mal träumen</h2>
           <ul>
             <li class="fragment">Distro released Security Update</li>
@@ -230,9 +250,22 @@
             <li class="fragment">Rolling Update im Kubernetes</li>
           </ul>
         </section>
+        <!-- TODO: graphic #2
         <section>
+
+        </section>
+        -->
+        <section>
+          <aside class="notes">
+            <ol>
+              <li>Für git only workflow siehe: container-warpdriveengaged</li>
+              <li>Mix ist in: warpdriveengaged-ruby</li>
+              <li>based: container failed wegen user statement im anderen container</li>
+            </ol>
+          </aside>
           <h2>Demo Time</h2>
           <p>Drückt uns die Daumen dass alles geht.</p>
+          <p><a href="https://build.opensuse.org/project/show/home:darix:container-workshop">https://build.opensuse.org/project/show/home:darix:container-workshop</a></p>
         </section>
         <section>
           <h1>Thank you for your time</h1>

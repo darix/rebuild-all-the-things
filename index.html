@@ -144,11 +144,12 @@
         </section>
 
         <section>
-          <aside class="notes">Überleitung: was für Prozesse brauche ich damit ich auch regelmäßig ausrollen kann.</aside>
+          <aside class="notes">Überleitung: was für Prozesse brauche ich damit ich auch regelmäßig ausrollen kann.<br />Hier erwähnen dass wir täglich unsere Updates ausrollen. Für bessere Überleitung zur nächsten Folie.</aside>
           <h2>Deploy Early</h2>
           <h3>Deploy Often</h3>
         </section>
         <section>
+          <aside class="notes">Alles ausser interaktiv markierte Updates (wie zb Kernel)</aside>
           <h2>Macht Ihr das wirklich?</h2>
           <ul>
             <li>Ja wir deployen mindestens täglich Updates automatisiert auf allen unseren Servern</li>
@@ -168,6 +169,7 @@
         </section>
 
         <section>
+          <aside class="notes">Heinlein bietet dafür auch Consulting und Schulungen. Und SUSE ein HA Produkt.</aside>
           <h2>Wir haben doch HA für unsere wichtigen Services</h2>
           <ul>
             <li class="fragment">Wir schalten auch regelmäßig um, damit wir sehen ob es geht.</li>
@@ -227,8 +229,8 @@
           <div style="display: flex; flex-direction: row-reverse;">
             <img style="float: right;" src="white-rabbit.jpg" />
             <ul>
-              <li>Polling vermeiden</li>
-              <li class="fragment">OBS kann Eventbenachrichtungen via AMQP</li>
+              <li>OBS kann Eventbenachrichtungen via AMQP</li>
+              <li class="fragment">Polling vermeiden</li>
               <li class="fragment">Beispiele auf <a href="https://rabbit.opensuse.org">rabbit.opensuse.org</a></li>
               <li class="fragment"><a href="https://openbuildservice.org/help/manuals/obs-admin-guide/obs.cha.administration.html#_message_bus">Dokumentation</a></li>
               <li class="fragment"><a href="https://openqa.opensuse.org/">openQA (Integrationstest für unsere Distributionen)</a></li>
@@ -236,6 +238,7 @@
           </div>
         </section>
         <section>
+          <aside class="notes">Ein anderer Ansatz zum Testing ist Error Monitoring im Rolling Update. Monitoring wird damit zur "Testsuite".</aside>
           <img src="outgoing.drawio.svg" />
         </section>
         <section>
@@ -250,19 +253,15 @@
           <aside class="notes">Mit so einem Workflow kann man dann Container auch in Production benutzen.</aside>
           <h2>Lasst uns mal träumen</h2>
           <ul>
-            <li class="fragment">Distro released Security Update</li>
+            <li class="fragment">Distribution veröffentlicht Security Update</li>
             <li class="fragment">OBS baut eventuell Pakete neu</li>
             <li class="fragment">OBS baut Container neu</li>
             <li class="fragment">Push auf die im OBS eingebaute Container Registry</li>
             <li class="fragment">AMQP Event</li>
+            <li class="fragment">Optional Integrationstest</li>
             <li class="fragment">Rolling Update im Kubernetes</li>
           </ul>
         </section>
-        <!-- TODO: graphic #2
-        <section>
-
-        </section>
-        -->
         <section>
           <aside class="notes">
             <ol>

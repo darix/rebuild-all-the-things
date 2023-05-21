@@ -48,13 +48,17 @@
       <div class="slides">
         <section>
           <h1>Die einzige Konstante im Leben ist Veränderung</h1>
+          <p class="small">Heraclitus</p>
         </section>
         <section>
           <h1>Container Sicherheit</h1>
           <h3>Welche Bibliothek läuft denn da?</h3>
+          <div style="display: flex; flex-direction: row-reverse;">
+            <img style="float: right;" src="SLAC_Logo_weiss_250px.png" />
           <p>
           <small>Created by <a href="https://github.com/lrupp">lrupp</a> &amp; <a href="https://github.com/darix">darix</a> and powered by <a href="https://github.com/hakimel/reveal.js/">reveal.js</a><br /><a href="https://creativecommons.org/licenses/by-nd/3.0/">CC BY-ND 3.0</a></small>
           </p>
+          </div>
         </section>
 
         <section>
@@ -72,7 +76,7 @@
 
         <section class="leftie">
           <h2>Containers are fun ...</h2>
-          <aside class="notes">Viele Upstream Container haben schlechte Security defaults. zb laufen unnoetig als root. Viele Freunde von mir die Container basiert arbeiten fixen diese Probleme dann.</aside>
+          <aside class="notes">Viele Upstream Container haben schlechte Security defaults. zb laufen unnötig als root. Viele Freunde von mir die Container basiert arbeiten fixen diese Probleme dann.</aside>
           <ul>
             <li>Wir können einfach und schnell viele Workloads deployen</li>
             <li>Upstream Container, selbst gebaute Container</li>
@@ -87,7 +91,7 @@
         <section>
           <h2>Wie erkennen welche Container Updates brauchen?</h2>
           <ul>
-            <li>Sowohl für Upstream Container
+            <li class="fragment">Für Upstream Container
               <ul class="fragment">
                 <li>Ob Upstream wohl trackt welche Libraries Security Updates brauchen?</li>
               </ul>
@@ -109,7 +113,7 @@
         <section>
           <aside class="notes">Ein Gespräch das so passiert ist.</aside>
           <h2>Wie macht ihr eigentlich OS Updates für die Container?</h2>
-          <p class="fragment">"Na wir deployen doch eh regelmäßig neu. Da machen wir die mit."</p>
+          <p class="fragment">"Na wir bauen und deployen doch eh regelmäßig neu. Da machen wir die mit."</p>
           <p class="fragment">"Und was ist mit dem Container da, der seit Monaten keine Änderungen im Git hatte?"</p>
           <p class="fragment"><b>*Schweigen*</b></p>
         </section>
@@ -157,7 +161,7 @@
         <section>
           <h2>Was ist ein Update Deployment</h2>
           <ul>
-            <li>Eine "Downtime" mit Ansage...</li>
+            <li class="fragment">Eine "Downtime" mit Ansage...</li>
             <li class="fragment">... und Vorbereitung</li>
           </ul>
         </section>

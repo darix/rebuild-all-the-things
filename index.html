@@ -48,13 +48,13 @@
       <div class="slides">
         <section>
           <h1>Die einzige Konstante im Leben ist Veränderung</h1>
-          <p class="small">Heraclitus</p>
+          <p class="small">Heraklit</p>
         </section>
         <section>
           <h1>Container Sicherheit</h1>
           <h3>Welche Bibliothek läuft denn da?</h3>
           <div style="display: flex; flex-direction: row-reverse;">
-            <img style="float: right; margin-left: 30px; border: none;" src="SLAC_Logo_weiss_250px.png" />
+              <a href="https://www.heinlein-support.de/secure-linux-administration-conference"><img style="float: right; margin-left: 30px; border: none;" src="SLAC_Logo_weiss_250px.png" /></a>
           <p>
           <small>Created by <a href="https://github.com/lrupp">lrupp</a> &amp; <a href="https://github.com/darix">darix</a> and powered by <a href="https://github.com/hakimel/reveal.js/">reveal.js</a><br /><a href="https://creativecommons.org/licenses/by-nd/3.0/">CC BY-ND 3.0</a></small>
           </p>
@@ -78,14 +78,19 @@
           <h2>Containers are fun ...</h2>
           <aside class="notes">Viele Upstream Container haben schlechte Security defaults. zb laufen unnötig als root. Viele Freunde von mir die Container basiert arbeiten fixen diese Probleme dann.</aside>
           <ul>
-            <li>Wir können einfach und schnell viele Workloads deployen</li>
-            <li>Upstream Container, selbst gebaute Container</li>
+            <li class="fragment">Wir können einfach und schnell viele Workloads deployen</li>
+            <li class="fragment">Brauchen weniger Systemresourcen als komplette virtuelle Maschinen (oder reale Hardware)</li>
+            <li class="fragment">Läuft fast überall - sehr portabel</li>
+            <li class="fragment">DevOPS, DevOPS überall (Entwicklung, Testing &amp; Produktion nutzt das gleiche Toolset)</li>
+            <li class="fragment">Upstream Container, selbst gebaute Container</li>
+            <li class="fragment">Skalierung - Microservices</li>
           </ul>
         </section>
         <section>
-          <h2>Jeder Container ein eigener Server</h2>
+          <h2>Jeder Container eine eigene Application - wie ein eigener Server?</h2>
           <ul>
-            <li class="fragment">Ein eigenes System was Updates braucht</li>
+            <li class="fragment">Container: Ein eigenes System das Updates braucht</li>
+            <li class="fragment">Container-Umgebungen: Ein wilder Zoo an Systemen, die Updates brauchen!</li>
           </ul>
         </section>
         <section>
@@ -108,7 +113,7 @@
           <h2>Biggest Mistake in IT history</h2>
           <ul>
             <li>Wir probieren Änderungen zu minimieren oder gar ganz zu vermeiden</li>
-            <li>Vielerlei Gründe - meistens fehlendes/verlorengeganges Wissen/Dokumentation</li>
+            <li>Vielerlei Gründe - meistens fehlendes/ verlorengeganges Wissen/ Dokumentation</li>
           </ul>
         </section>
         <section>
@@ -119,14 +124,14 @@
           <p class="fragment"><b>*Schweigen*</b></p>
         </section>
         <section>
-          <aside class="notes">SUSE hat auch was dafür soll bei diesem Talk aber nicht Thema sein.</aside>
+           <aside class="notes">SUSE hat auch was dafür soll bei diesem Talk aber nicht Thema sein.</aside>
           <h2>NeuVector</h2>
             <ul>
               <li>Viele Features für Sicherheit in der Container Infrastruktur</li>
               <li>Unter anderem Scanning für fehlende Security Updates in Containern</li>
             </ul>
             <p><a href="https://www.neuvector.com/">www.neuvector.com</a></p>
-            <img style="border: none;" width="465" height="110" src="NeuVector-logo.png" />
+            <a href="https://www.neuvector.com/"><img style="border: none;" width="465" height="110" src="NeuVector-logo.png" /></a>
         </section>
         <section>
           <h2>Und dann?</h2>
@@ -152,8 +157,8 @@
           <aside class="notes">Alles ausser interaktiv markierte Updates (wie zb Kernel)</aside>
           <h2>Macht Ihr das wirklich?</h2>
           <ul>
-            <li>Ja wir deployen mindestens täglich Updates automatisiert auf allen unseren Servern</li>
-            <li>Noch öfters wäre auch kein Problem</li>
+            <li class="fragment">Ja wir deployen mindestens täglich Updates automatisiert auf allen unseren Servern</li>
+            <li class="fragment">Noch öfters wäre auch kein Problem</li>
           </ul>
         </section>
         <section>
@@ -172,28 +177,37 @@
           <aside class="notes">Heinlein bietet dafür auch Consulting und Schulungen. Und SUSE ein HA Produkt.</aside>
           <h2>Wir haben doch HA für unsere wichtigen Services</h2>
           <ul>
-            <li class="fragment">Wir schalten auch regelmäßig um, damit wir sehen ob es geht.</li>
+            <li class="fragment">Wir schalten also regelmäßig um, damit wir sehen ob es geht.</li>
             <li class="fragment">Schafft auch Vertrauen dass beim Ausrollen von Updates nicht gleich alles kaputt geht.</li>
-            <li class="fragment">Wo ist der Unterschied zum Deployment einer anderen Änderung (Config/Code/Update)?</li>
+            <li class="fragment">Wo ist der Unterschied zum Deployment einer anderen Änderung (Config/ Code/ Update)?</li>
           </ul>
         </section>
         <section>
+          <aside class="notes">Genug Eigenlob und Vorspiel: jetzt geht es endlich los!</aside>
           <h1>Automatisierung der Container Pipeline</h1>
           <h3>Jetzt geht es um den <a href="https://openbuildservice.org">Open Build Service aka OBS</a></h3>
         </section>
         <section>
-          <h2>Was kann der OBS</h2>
+          <h2>Was kann der OBS?</h2>
           <ul>
-            <li>Native Pakete (rpm/deb/Arch/flatpak/AppImage)</li>
-            <li>Native Paket-Repositories</li>
-            <li>Images (für Hardware/VMs)</li>
-            <li>Container (via kiwi oder Dockerfile)</li>
-            <li>Container Registry</li>
+            <li class="fragment">Native Pakete (RPM, Deb, Arch, Flatpak, AppImage)</li>
+            <li class="fragment">Native Paket-Repositories (supports: dnf, zypper, yum, apt, pacman, flatpak, ...)</li>
+            <li class="fragment">Images (für Hardware oder VMs) - SimpleImage, KIWI, mkosi</li>
+            <li class="fragment">Container (via KIWI oder Dockerfile)</li>
+            <li class="fragment">Container Registry</li>
           </ul>
         </section>
         <section>
           <aside class="notes">Man kann auch Container auf einander aufbauen lassen.</aside>
-          <h2>Wie kann OBS uns bei unserem Problem helfen?</h2>
+        <h2>Wie baut der OBS Container?</h2>
+        <ul>
+            <li>Wie üblich bauen Container aufeinander auf: auch in OBS gibt es Basis-Container</li>
+            <li>Dazu kommen dann weitere Pakete und Konfigurationsdetails</li>
+            <li>Ein KIWI oder Dockerfile enthält am Ende die fertige Bauanleitung</li>
+        </ul>
+        </section>
+        <section>
+          <h2>Wie kann OBS uns bei unserem Update-Problem helfen?</h2>
           <ul>
             <li class="fragment">OBS weiss wo welches Paket benutzt wird</li>
             <li class="fragment">Jede Änderung eines Pakets baut auch darauf aufbauende Sachen neu</li>
@@ -201,30 +215,51 @@
           </ul>
         </section>
         <section>
+            <aside class="notes">
+                <ul>
+                    <li>https://sources.suse.com/ stellt die Sourcen aller seit 2020 von SUSE offiziell veröffentlichten Container zur Verfügung!<li>
+                    <li>Die URL aus der Ausgabe von <pre>rpm -q --qf "%{DISTURL}\n" aaa_base</pre> führt - über die Eingabe in das Suchfeld - im passenden OBS System 
+                        direkt zu den Sourcen, mit welchen das Paket gebaut wurde.</li>
+                    <li>SUSE macht sogar ein erweitertes <a href="https://documentation.suse.com/sbp/server-linux/html/SBP-SLSA4/index.html">SLSA Level 4</a></li>
+                </ul>
+            </aside>
           <h2>Reproduzierbarkeit</h2>
           <ul>
-            <li>Alle Builds laufen in einer reproduzierbaren Umgebung</li>
-            <li>Kein Netzwerkzugang während des Builds</li>
-            <li>Die Sourcen werden dem Build lokal zur Verfügung gestellt</li>
+            <li class="fragment">Alle Builds laufen in einer reproduzierbaren Umgebung</li>
+            <li class="fragment">Kein Netzwerkzugang während des Builds</li>
+            <li class="fragment">Die Sourcen werden dem Build lokal zur Verfügung gestellt</li>
+            <li class="fragment">Die Reproduzierbarkeit betrifft auch die Build Umgebung selbst</li>
+            <li class="fragment">Folge: OBS speichert Sourcen normalerweise selbst</li>
           </ul>
         </section>
         <section>
           <aside class="notes">
-            self hosted: Workflows sind nicht im aktuellen Stable Release. (2.10.x) build.opensuse.org läuft auf unstable.
+            Hinweis für self hosted OBS: Workflows sind nicht im aktuellen Stable Release. (2.10.x) build.opensuse.org läuft auf unstable.
             Nicht jeder muss self hosting machen. Wenn eure Container öffentlich sein können nehmt build.opensuse.org
           </aside>
-          <h2>Wir haben doch schon git</h2>
+          <h2>Aber wir haben doch schon git</h2>
           <ul>
-            <li>Kein Problem</li>
+            <li class="fragment">Kein Problem</li>
             <li class="fragment"><a href="https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.source_service.html">OBS kann Integration via Webhooks</a></li>
             <li class="fragment"><a href="https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.scm_ci_workflow_integration.html">Sogar für mehrere Branches parallel via Workflows</a></li>
-            <li class="fragment">Source Services können auch Go/Cargo/NodeJS Module ziehen zum bauen</li>
+            <li class="fragment">Source Services können auch Go/ Cargo/ NodeJS Module ziehen zum bauen</li>
+            <li class="fragment">Wenn gewünscht, cached OBS die Sourcen nur - allerdings kann ein Backup eigentlich nie schaden</li>
           </ul>
         </section>
         <section>
+            <aside class="notes">
+                <ul>
+                    <li>Vom GIT Commit geht es in die Testsuite, die informiert - via Webhook - den OBS. Der macht - via Source Service - einen Git checkout und baut neu.</li>
+                    <li>Ein GIT Commit kann auch direkt - via Webook - den OBS triggern.</li>
+                    <li>Ein neu gebautes Paket kann dann wiederum andere Pakete, Container oder Images triggern.</li>
+                </ul>
+            </aside>
+          <h2>OBS SCM Integration - grafisch</h2>
           <img src="incoming.drawio.svg" />
         </section>
         <section>
+            <aside class="notes">Zusätzlich zu den Webhooks, die bestimmte Systeme miteinander verbinden, ermöglicht OBS es via RabbitMQ, Nachrichten vom OBS
+                zu empfangen und flexibel darauf zu reagieren. Der Phantasie sind hier eigentlich keine Grenzen gesetzt.</aside>
           <h2>Follow the white rabbit</h2>
           <div style="display: flex; flex-direction: row-reverse;">
             <img style="float: right;" src="white-rabbit.jpg" />
@@ -238,7 +273,14 @@
           </div>
         </section>
         <section>
-          <aside class="notes">Ein anderer Ansatz zum Testing ist Error Monitoring im Rolling Update. Monitoring wird damit zur "Testsuite".</aside>
+            <aside class="notes">
+                <ul>
+                    <li>Diverse Statusänderungen führen zu einer Nachricht auf dem Bus - Beispiel: ein Repository wurde erzeugt.</li>
+                    <li>OBS schickt eine Nachricht an RabbitMQ - hier können beliebige Clients 'andocken' und lauschen.</li>
+                    <li>Kommt das richtige Event vorbei, kann dann z.B. ein Test oder Rolling Update in Kubernetes angestoßen werden.</li>
+                </ul>
+              <br />Ein anderer Ansatz zum Testing ist Error Monitoring im Rolling Update. Monitoring wird damit zur "Testsuite".</aside>
+          <h2>OBS RabbitMQ Messagebus</h2>
           <img src="outgoing.drawio.svg" />
         </section>
         <section>
@@ -275,7 +317,20 @@
           <p>Drückt uns die Daumen dass alles geht.</p>
           <p><a href="https://build.opensuse.org/project/show/home:darix:container-workshop">https://build.opensuse.org/ → home:darix:container-workshop</a></p>
         </section>
-
+        <section>
+            <h2>Für den Fall der Fälle</h2>
+            <p>...oder einfach für später:</p>
+            <ul>
+                <li><a href="https://build.opensuse.org/project/show/home:darix:container-workshop">Das OBS Repository für den Workshop</a></li>
+                <li><a href="https://github.com/darix/warpdriveengaged-ruby">Ein einfaches Github Projekt</a></li>
+                <li><a href="https://build.opensuse.org/package/show/home:darix:container-workshop/warpdriveengaged-ruby">Das Paket zum Github Projekt</a> - via Source Service wird hier automatisch die aktuellste GIT Version gezogen.</li>
+                <li><a href="https://github.com/darix/container-warpdriveengaged">Dockerfile in Github</a></li>
+                <li><a href="https://build.opensuse.org/package/show/home:darix:container-workshop/container-warpdriveengaged">Passender Container in OBS</a></li>
+                <li><a href="https://build.opensuse.org/package/show/home:darix:container-workshop/container-warpdriveengaged-proper-base">Container mit eigenem Dockerfile in OBS</a></li>
+                <li><a href="https://build.opensuse.org/package/show/home:darix:container-workshop/container-warpdriveengaged-proper-based">Stacked Container</a> - hängt vom oberen Container ab - und hat weitere Features</li>
+<!-- Wird zu viel:                <li><a href="https://build.opensuse.org/package/show/home:darix:container-workshop/container-warpdriveengaged-based">Broken Container</a> - der USER is already defined in the Base Container (wrong way)</li> -->
+            </ul>
+        </section>
         <section>
           <aside class="notes">Blog für Neuigkeiten</aside>
           <h2>Wo bekomme ich mehr Information?</h2>

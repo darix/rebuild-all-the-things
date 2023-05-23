@@ -158,7 +158,7 @@
           <h2>Macht Ihr das wirklich?</h2>
           <ul>
             <li class="fragment">Ja wir deployen mindestens täglich Updates automatisiert auf allen unseren Servern</li>
-            <li class="fragment">Noch öfters wäre auch kein Problem</li>
+            <li class="fragment">Noch häufiger wäre auch kein Problem</li>
           </ul>
         </section>
         <section>
@@ -174,11 +174,11 @@
         </section>
 
         <section>
-          <aside class="notes">Heinlein bietet dafür auch Consulting und Schulungen. Und SUSE ein HA Produkt.</aside>
+          <aside class="notes">Heinlein bietet dafür Consulting und Schulungen. Und SUSE ein HA Produkt.</aside>
           <h2>Wir haben doch HA für unsere wichtigen Services</h2>
           <ul>
-            <li class="fragment">Wir schalten also regelmäßig um, damit wir sehen ob es geht.</li>
-            <li class="fragment">Schafft auch Vertrauen dass beim Ausrollen von Updates nicht gleich alles kaputt geht.</li>
+            <li class="fragment">Wir schalten regelmäßig um, damit wir sehen ob es geht.</li>
+            <li class="fragment">Schafft Vertrauen dass beim Ausrollen von Updates nicht gleich alles kaputt geht.</li>
             <li class="fragment">Wo ist der Unterschied zum Deployment einer anderen Änderung (Config/ Code/ Update)?</li>
           </ul>
         </section>
@@ -202,16 +202,16 @@
         <h2>Wie baut der OBS Container?</h2>
         <ul>
             <li>Wie üblich bauen Container aufeinander auf: auch in OBS gibt es Basis-Container</li>
-            <li>Dazu kommen dann weitere Pakete und Konfigurationsdetails</li>
-            <li>Ein KIWI oder Dockerfile enthält am Ende die fertige Bauanleitung</li>
+            <li>Dazu kommen weitere Pakete und Konfigurationsdetails</li>
+            <li>Ein KIWI oder Dockerfile enthält die fertige Bauanweisung</li>
         </ul>
         </section>
         <section>
           <h2>Wie kann OBS uns bei unserem Update-Problem helfen?</h2>
           <ul>
             <li class="fragment">OBS weiss wo welches Paket benutzt wird</li>
-            <li class="fragment">Jede Änderung eines Pakets baut auch darauf aufbauende Sachen neu</li>
-            <li class="fragment">Das gilt auch für Updates von der Basisdistribution</li>
+            <li class="fragment">Jede Änderung eines Pakets baut auch darauf aufbauende Projekte/ Pakete/ Sachen neu</li>
+            <li class="fragment">Das gilt auch für Updates der Basisdistribution</li>
           </ul>
         </section>
         <section>
@@ -295,11 +295,11 @@
           <h2>Lasst uns mal träumen</h2>
           <ul>
             <li class="fragment">Distribution veröffentlicht Security Update</li>
-            <li class="fragment">OBS baut eventuell Pakete neu</li>
+            <li class="fragment">OBS baut Pakete neu</li>
             <li class="fragment">OBS baut Container neu</li>
             <li class="fragment">Push auf die im OBS eingebaute Container Registry</li>
             <li class="fragment">AMQP Event</li>
-            <li class="fragment">Optional Integrationstest</li>
+            <li class="fragment">Integrationstest</li>
             <li class="fragment">Rolling Update im Kubernetes</li>
           </ul>
         </section>
